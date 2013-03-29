@@ -1,0 +1,44 @@
+﻿<div id="applicationHost" class="ng-cloak">
+    <header>
+        <h3>{{title}}</h3>
+    </header>
+    <section>
+
+        <div class="container">
+            <div class="row">
+                <div class="span2">
+                    <fieldset>
+                        <legend>Calendar Item</legend>
+                        <form data-ng-model="item" data-ng-submit="addCalendarItem()">
+                            <div data-ng-show="item.id > -1">{{item.id}}<button data-ng-click="clearForm()">Add New</button></div>
+                            <div data-ng-show="item.id > -1">{{item.id}}</div>
+                            <div class="control-group">
+                                <label class="control-label">Title</label>
+                                <div class="controls">
+                                    <input type="text" data-ng-model="item.title" data-ng-required="true" class="input-medium"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Meal Date</label>
+                                <div class="controls">
+                                    <input data-ng-model="item.start" data-ng-required="true" ui-date="dateOptions" ui-date-format="mm/dd/yy" type="text" class="input-medium" placeholder="">
+                                
+                                </div>
+                            </div>
+
+                            <input type="submit" value="Submit" class="btn" />
+                        </form>
+                    </fieldset>
+                </div>
+                <div class="span10">
+                    <div data-ui-calendar="calendarOptions" class="span8 calendar" data-ng-model="eventSources"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <h3>Events</h3>
+    <div data-ng-repeat="event in events">
+        <p>{{event.title}}</p>
+    </div>
+</div>
